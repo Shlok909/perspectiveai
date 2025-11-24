@@ -2,6 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, BookOpen, BrainCircuit, MessageSquareQuote, Rocket } from 'lucide-react';
 import MentorSearchForm from '@/components/home/mentor-search-form';
+import Link from 'next/link';
+import { slugify } from '@/lib/utils';
 
 const exampleMentors = ['Marcus Aurelius', 'Naval Ravikant', 'Steve Jobs', 'APJ Abdul Kalam', 'Rumi'];
 const categories = [
@@ -18,7 +20,7 @@ const popularMentors = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center p-4 md:p-8">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
       <div className="w-full max-w-4xl mx-auto text-center mt-8 md:mt-16">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground">
           Get advice from anyone you admire.
@@ -48,19 +50,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-16 w-full text-left">
+        <div className="mt-16 w-full text-left mb-16">
           <h2 className="text-center text-sm font-semibold uppercase text-muted-foreground tracking-wider">
             Recently Popular
           </h2>
           <div className="mt-4 space-y-2">
             {popularMentors.map((mentor) => (
-              <Card key={mentor.name} className="p-4 flex items-center justify-between hover:bg-muted/50 transition-colors">
-                <div>
-                  <p className="font-semibold">{mentor.name}</p>
-                  <p className="text-sm text-muted-foreground">{mentor.chats}</p>
-                </div>
-                <ArrowRight className="h-5 w-5 text-muted-foreground" />
-              </Card>
+              <Link href={`/configure/${slugify(mentor.name)}`} key={mentor.name}>
+                <Card className="p-4 flex items-center justify-between hover:bg-muted/50 transition-colors cursor-pointer">
+                  <div>
+                    <p className="font-semibold">{mentor.name}</p>
+                    <p className="text-sm text-muted-foreground">{mentor.chats}</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-muted-foreground" />
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
