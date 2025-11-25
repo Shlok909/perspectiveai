@@ -8,6 +8,7 @@ export const preloadedMentors: MentorProfile[] = [
     name: "Marcus Aurelius",
     field: "Roman Emperor, Stoic Philosopher",
     era: "161-180 AD",
+    isFictional: false,
     knowledgeSources: [
       { type: "book", title: "Meditations" },
     ],
@@ -20,6 +21,7 @@ export const preloadedMentors: MentorProfile[] = [
     name: "Naval Ravikant",
     field: "Entrepreneur, Investor, Philosopher",
     era: "Contemporary (1974-present)",
+    isFictional: false,
     knowledgeSources: [
       { type: "book", title: "The Almanack of Naval Ravikant", author: "Eric Jorgenson" },
       { type: "podcast", title: "Naval Podcast", episodes: "50+" },
@@ -34,6 +36,7 @@ export const preloadedMentors: MentorProfile[] = [
     name: "APJ Abdul Kalam",
     field: "Aerospace Scientist, 11th President of India",
     era: "1931-2015",
+    isFictional: false,
     knowledgeSources: [
         { type: "book", title: "Wings of Fire" },
         { type: "book", title: "Ignited Minds" },

@@ -23,6 +23,7 @@ const CreateMentorProfileOutputSchema = z.object({
   name: z.string().describe('The full name of the mentor.'),
   field: z.string().describe('The field of expertise of the mentor.'),
   era: z.string().describe('The era in which the mentor lived/lives.'),
+  isFictional: z.boolean().describe('Whether the character is fictional or a real person.'),
   knowledgeSources: z.array(
     z.object({
       type: z.string().describe('The type of knowledge source (e.g., book, podcast, interview).'),
@@ -48,8 +49,7 @@ const mentorProfilePrompt = ai.definePrompt({
   name: 'mentorProfilePrompt',
   input: {schema: CreateMentorProfileInputSchema},
   output: {schema: CreateMentorProfileOutputSchema},
-  prompt: `Identify this person: "{{mentorName}}"\nProvide:\nFull name and background\nField of expertise\nKey knowledge sources (books, podcasts, interviews)\nCore philosophy and thinking patterns\nCommunication style\nFamous quotes or teachings\nA brief biography\nA URL of the mentor photo.
-Format as JSON.`,
+  prompt: `Identify this person: "{{mentorName}}"\nDetermine if they are a fictional character.\nProvide:\nFull name and background\nField of expertise\nKey knowledge sources (books, podcasts, interviews)\nCore philosophy and thinking patterns\nCommunication style\nFamous quotes or teachings\nA brief biography\nA URL of the mentor photo.\nFormat as JSON.`,
 });
 
 const createMentorProfileFlow = ai.defineFlow(

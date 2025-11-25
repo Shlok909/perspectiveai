@@ -29,6 +29,7 @@ export async function getMentorProfileAction(mentorName: string): Promise<Mentor
       name: mentorName,
       field: 'Unknown',
       era: 'Unknown',
+      isFictional: false, // Assume not fictional on error
       knowledgeSources: [],
       thinkingStyle: 'Unknown',
       communicationStyle: 'Unknown',
