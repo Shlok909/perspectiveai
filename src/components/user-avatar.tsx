@@ -1,9 +1,7 @@
 'use client';
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import placeholderData from '@/lib/placeholder-images.json';
-import { LogIn } from "lucide-react";
 import { useState } from "react";
 
 export function UserAvatar() {
@@ -11,12 +9,9 @@ export function UserAvatar() {
   const userImage = placeholderData.placeholderImages.find(p => p.id === 'user-avatar');
 
   if (!isLoggedIn) {
-    return (
-      <Button variant="ghost" onClick={() => setIsLoggedIn(true)}>
-        <LogIn className="mr-2 h-4 w-4" />
-        Sign In
-      </Button>
-    )
+    // The Sign In button was here. It has been removed as requested.
+    // An empty fragment is returned to render nothing when not logged in.
+    return <></>;
   }
 
   return (
