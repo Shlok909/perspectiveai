@@ -4,14 +4,10 @@ import { ArrowRight, BookOpen, BrainCircuit, MessageSquareQuote, Rocket } from '
 import MentorSearchForm from '@/components/home/mentor-search-form';
 import Link from 'next/link';
 import { slugify } from '@/lib/utils';
+import { categories } from '@/lib/categories.tsx';
 
 const exampleMentors = ['Marcus Aurelius', 'Naval Ravikant', 'Steve Jobs', 'APJ Abdul Kalam', 'Rumi'];
-const categories = [
-  { name: 'Business', icon: <Rocket className="h-5 w-5" /> },
-  { name: 'Philosophy', icon: <BrainCircuit className="h-5 w-5" /> },
-  { name: 'Science', icon: <BookOpen className="h-5 w-5" /> },
-  { name: 'Spiritual', icon: <MessageSquareQuote className="h-5 w-5" /> },
-];
+
 const popularMentors = [
   { name: 'Marcus Aurelius', chats: '1.2k chats today' },
   { name: 'Naval Ravikant', chats: '890 chats' },
@@ -42,9 +38,11 @@ export default function Home() {
           </h2>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.map((category) => (
-              <Button key={category.name} variant="outline" className="h-12 text-base justify-start gap-3">
-                {category.icon}
-                {category.name}
+               <Button key={category.name} variant="outline" asChild className="h-12 text-base justify-start gap-3">
+                <Link href={`/category/${category.name.toLowerCase()}`}>
+                  {category.icon}
+                  {category.name}
+                </Link>
               </Button>
             ))}
           </div>

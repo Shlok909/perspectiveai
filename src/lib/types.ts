@@ -1,6 +1,9 @@
 import type { CreateMentorProfileOutput } from "@/ai/flows/dynamic-mentor-profile-creation";
 
-export type MentorProfile = CreateMentorProfileOutput;
+export interface MentorProfile extends CreateMentorProfileOutput {
+  id: string;
+  category: string;
+}
 
 export interface Source {
   source_type: string;
