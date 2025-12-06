@@ -9,7 +9,7 @@ export default function AppHeader() {
       <div className="container flex h-14 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <PerspectiveLogo className="h-6 w-6 text-primary" />
-          <span className="hidden font-bold sm:inline-block">
+          <span className="font-bold">
             Perspective
           </span>
         </Link>
